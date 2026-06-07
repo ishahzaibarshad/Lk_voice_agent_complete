@@ -1,0 +1,7 @@
+livekit-agents
+livekit-api
+python-dotenv
+groq
+cartesia
+noise-cancellation
+silero-vad
