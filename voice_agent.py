@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 
 from livekit import agents
@@ -16,22 +15,14 @@ from livekit.plugins import openai as openai_plugin
 from livekit.plugins.groq import STT as GroqSTT, LLM as GroqLLM
 from livekit.plugins.cartesia import TTS as CartesiaTTS
 from livekit.plugins.silero import VAD as SileroVAD
+from config import load_provider_keys
 
-load_dotenv(".env", override=True)
+load_dotenv()
 
-OPENAI_KEY = os.getenv("OPENAI_API_KEY")
-GROQ_KEY = os.getenv("GROQ_API_KEY")
-CARTESIA_KEY = os.getenv("CARTESIA_API_KEY")
-
-if not OPENAI_KEY and not GROQ_KEY:
-    raise RuntimeError(
-        "Set GROQ_API_KEY or OPENAI_API_KEY in .env"
-    )
-
-if not CARTESIA_KEY:
-    raise RuntimeError(
-        "Set CARTESIA_API_KEY in .env"
-    )
+provider_keys = load_provider_keys()
+OPENAI_KEY = provider_keys.openai
+GROQ_KEY = provider_keys.groq
+CARTESIA_KEY = provider_keys.cartesia
 
 
 class Assistant(Agent):
@@ -118,3 +109,4 @@ async def entrypoint(ctx: JobContext):
 
 if __name__ == "__main__":
     cli.run_app(server)
+
