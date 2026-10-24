@@ -10,7 +10,7 @@ from livekit.plugins.groq import STT as GroqSTT, LLM as GroqLLM
 from livekit.plugins.cartesia import TTS as CartesiaTTS
 from livekit.plugins.silero import VAD as SileroVAD
 
-load_dotenv(".env", override=True)
+load_dotenv()
 
 OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 GROQ_KEY = os.getenv("GROQ_API_KEY")
@@ -141,7 +141,4 @@ if __name__ == "__main__":
     print("Starting Voice Agent worker...")
     print(f"LIVEKIT_URL={LIVEKIT_URL}")
     cli.run_app(create_worker_options())
-
-
-
 

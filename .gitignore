@@ -1,5 +1,23 @@
-venv/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+.venv/
+venv/
+ENV/
+env/
+
+# Local credentials and runtime data
 .env
-.env.local
+.env.*
+!.env.example
+*.log
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+.pytest_cache/
+.pytest-tmp/
+
